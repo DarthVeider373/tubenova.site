@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desatadora de Nós</title>
+
+  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+
+  <script>
+    window.googlePixelId = "6a08f04f5b5c4ce4887ab26b";
+
+    (() => {
+      const scriptPixel = document.createElement("script");
+      scriptPixel.async = true;
+      scriptPixel.defer = true;
+      scriptPixel.src = "https://cdn.utmify.com.br/scripts/pixel/pixel-google.js";
+      document.head.appendChild(scriptPixel);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --page-bg: #4f3300;
+      --dark-brown: #4e3200;
+      --medium-brown: #7b5300;
+      --gold-text: #f8df9a;
+      --soft-white: #fffdf6;
+      --main-text: #1c1208;
+      --button-gold-1: #e7aa00;
+      --button-gold-2: #f7c918;
+      --button-gold-3: #cb8f00;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--page-bg);
+      font-family: 'Poppins', sans-serif;
+      padding: 22px 16px 40px;
+      display: grid;
+      place-items: start center;
+      overflow-x: hidden;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .offer-card {
+      width: 100%;
+      background: #ffffff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.42);
+    }
+
+    .image-box {
+      background: #ffffff;
+      padding: 14px 14px 0;
+      text-align: center;
+    }
+
+    .image-box img {
+      width: 64%;
+      max-width: 230px;
+      height: auto;
+      display: inline-block;
+      border-radius: 14px;
+    }
+
+    .label {
+      background: linear-gradient(90deg, var(--dark-brown), var(--medium-brown), var(--dark-brown));
+      color: var(--gold-text);
+      padding: 11px 16px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .offer-content {
+      background: var(--soft-white);
+      padding: 24px 22px 28px;
+      display: grid;
+      gap: 14px;
+      justify-items: center;
+    }
+
+    .title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 6vw, 31px);
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--main-text);
+      text-align: center;
+    }
+
+    .title strong {
+      color: var(--medium-brown);
+      font-style: italic;
+      font-weight: 900;
+    }
+
+    .subtitle {
+      color: var(--medium-brown);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .action-button {
+      width: 100%;
+      min-height: 56px;
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--button-gold-1), var(--button-gold-2), var(--button-gold-3));
+      color: var(--main-text);
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 0 5px 18px rgba(180, 120, 0, 0.5);
+      animation: buttonGlow 2.5s ease-in-out infinite;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .action-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(180, 120, 0, 0.7);
+    }
+
+    .action-button:active {
+      transform: scale(0.99);
+    }
+
+    .access-note {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #777777;
+      font-size: 13px;
+    }
+
+    .footer {
+      margin-top: 24px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 11px;
+      line-height: 2;
+    }
+
+    .footer a {
+      color: rgba(255, 255, 255, 0.95);
+      text-decoration: underline;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .popup-area {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.74);
+      padding: 18px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .popup-area.is-visible {
+      display: flex;
+    }
+
+    .popup-card {
+      width: 100%;
+      max-width: 720px;
+      max-height: 88vh;
+      overflow-y: auto;
+      background: var(--soft-white);
+      border: 2px solid #f5c518;
+      border-radius: 24px;
+      box-shadow: 0 20px 70px rgba(0, 0, 0, 0.5);
+      animation: popupEnter 0.25s ease;
+    }
+
+    .popup-top {
+      background: linear-gradient(90deg, var(--dark-brown), var(--medium-brown), var(--dark-brown));
+      color: var(--gold-text);
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .popup-top h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .popup-close {
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .popup-text {
+      padding: 24px;
+      color: #2b1b08;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .popup-text h3 {
+      color: var(--medium-brown);
+      font-size: 17px;
+      margin: 18px 0 8px;
+    }
+
+    .popup-text p {
+      margin-bottom: 12px;
+    }
+
+    @keyframes buttonGlow {
+
+      0%,
+      100% {
+        box-shadow: 0 5px 18px rgba(180, 120, 0, 0.45);
+      }
+
+      50% {
+        box-shadow: 0 5px 30px rgba(180, 120, 0, 0.85);
+      }
+    }
+
+    @keyframes popupEnter {
+      from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 12px 10px 28px;
+      }
+
+      .offer-card {
+        border-radius: 20px;
+      }
+
+      .image-box img {
+        width: 52%;
+        max-width: 165px;
+      }
+
+      .label {
+        font-size: 11px;
+        padding: 8px 14px;
+      }
+
+      .offer-content {
+        padding: 18px 18px 24px;
+      }
+
+      .title {
+        font-size: 22px;
+      }
+
+      .subtitle {
+        font-size: 10px;
+      }
+
+      .action-button {
+        font-size: 16px;
+        min-height: 52px;
+        padding: 0 18px;
+      }
+
+      .popup-top h2 {
+        font-size: 21px;
+      }
+
+      .popup-text {
+        padding: 20px;
+        font-size: 13.5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <main class="offer-card">
+
+      <figure class="image-box">
+        <img src="./images/nossa-senhora-desatadora.jpg" alt="Desatadora de Nós" onerror="this.style.display='none'">
+      </figure>
+
+      <div class="label">
+        ✨ DESATADORA DE NÓS ✨
+      </div>
+
+      <section class="offer-content">
+
+        <h1 class="title">
+          Escute essa <strong>oração<br>de 7 palavras</strong>
+        </h1>
+
+        <p class="subtitle">
+          Clique abaixo e Ouça agora
+        </p>
+
+        <a href="../vsl-2/" class="action-button" id="offerButton">
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+          </svg>
+
+          Ouvir Agora
+
+        </a>
+
+        <div class="access-note">
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#8b6000" viewBox="0 0 16 16">
+            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+          </svg>
+
+          Acesso imediato e gratuito
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      © 2026 Desatadora de Nós. Todos os direitos reservados.
+      <br>
+      <a onclick="showPopup('terms')">Termos de Uso</a>
+      ·
+      <a onclick="showPopup('privacy')">Política de Privacidade</a>
+    </footer>
+
+  </div>
+
+  <div class="popup-area" id="popupArea">
+
+    <article class="popup-card">
+
+      <header class="popup-top">
+        <h2 id="popupHeading">Termos de Uso</h2>
+        <button class="popup-close" onclick="hidePopup()">×</button>
+      </header>
+
+      <div class="popup-text" id="popupBody"></div>
+
+    </article>
+
+  </div>
+
+  <script>
+    (() => {
+      const queryString = window.location.search;
+      const button = document.getElementById("offerButton");
+
+      if (!queryString || !button) return;
+
+      const href = button.getAttribute("href");
+      const divider = href.includes("?") ? "&" : "?";
+
+      button.setAttribute("href", href + divider + queryString.substring(1));
+    })();
+
+    const popupTexts = {
+      terms: {
+        heading: "Termos de Uso",
+        body: `
+          <p>Ao acessar esta página, você concorda com os presentes Termos de Uso.</p>
+
+          <h3>1. Finalidade do Conteúdo</h3>
+          <p>O conteúdo apresentado possui finalidade informativa, espiritual e devocional.</p>
+
+          <h3>2. Uso da Página</h3>
+          <p>Você se compromete a utilizar esta página de forma adequada.</p>
+
+          <h3>3. Responsabilidade</h3>
+          <p>Esta página não substitui orientação profissional.</p>
+        `
+      },
+
+      privacy: {
+        heading: "Política de Privacidade",
+        body: `
+          <p>A sua privacidade é importante para nós.</p>
+
+          <h3>1. Coleta de Informações</h3>
+          <p>Podemos coletar dados básicos de navegação para melhorar a experiência.</p>
+
+          <h3>2. Cookies</h3>
+          <p>Cookies podem ser utilizados para análise de desempenho e campanhas.</p>
+
+          <h3>3. Segurança</h3>
+          <p>Adotamos medidas razoáveis para proteger as informações.</p>
+        `
+      }
+    };
+
+    const popupArea = document.getElementById("popupArea");
+    const popupHeading = document.getElementById("popupHeading");
+    const popupBody = document.getElementById("popupBody");
+
+    function showPopup(type) {
+      const selectedPopup = popupTexts[type];
+
+      popupHeading.innerHTML = selectedPopup.heading;
+      popupBody.innerHTML = selectedPopup.body;
+
+      popupArea.classList.add("is-visible");
+      document.body.style.overflow = "hidden";
+    }
+
+    function hidePopup() {
+      popupArea.classList.remove("is-visible");
+      document.body.style.overflow = "";
+    }
+
+    popupArea.addEventListener("click", function (event) {
+      if (event.target === popupArea) {
+        hidePopup();
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        hidePopup();
+      }
+    });
+  </script>
+
+</body>
+
+</html>
