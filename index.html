@@ -574,6 +574,104 @@
             color: #777;
         }
 
+
+
+        /* Policy Modal Popups */
+        .policy-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.72);
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        .policy-modal.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .policy-modal-content {
+            width: 100%;
+            max-width: 860px;
+            background: #fefdfb;
+            color: #2d2a26;
+            border-radius: 18px;
+            margin: 40px auto;
+            padding: 38px;
+            position: relative;
+            box-shadow: 0 18px 60px rgba(0,0,0,0.35);
+            border: 1px solid #e5ded4;
+            text-align: left;
+        }
+
+        .policy-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 18px;
+            border: none;
+            background: #f2ede5;
+            color: #1a1a1a;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 24px;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .policy-modal-close:hover {
+            background: #e5ded4;
+        }
+
+        .policy-modal-content h2 {
+            font-size: clamp(24px, 4vw, 34px);
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .policy-modal-content .policy-updated {
+            color: #8b6914;
+            font-size: 13px;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .policy-modal-content h3 {
+            font-size: 17px;
+            color: #8b6914;
+            margin-top: 26px;
+            margin-bottom: 8px;
+        }
+
+        .policy-modal-content p,
+        .policy-modal-content li {
+            font-size: 14px;
+            color: #5a5550;
+            line-height: 1.8;
+        }
+
+        .policy-modal-content ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        .inline-policy-link {
+            background: none;
+            border: none;
+            padding: 0;
+            color: #c9a96e;
+            text-decoration: underline;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -774,7 +872,7 @@
 
                     <button type="submit" class="form-submit">I want to receive information ✝</button>
 
-                    <p class="form-privacy">🔒 Your data is safe. We do not share your information with third parties. By submitting this form, you agree to our Privacy Policy.</p>
+                    <p class="form-privacy">🔒 Your data is safe. We do not share your information with third parties. By submitting this form, you agree to our <button type="button" class="inline-policy-link" data-modal="privacyModal">Privacy Policy</button>.</p>
                 </form>
 
                 <div class="success-message" id="successMessage">
@@ -828,7 +926,7 @@
 
             <div class="disclaimer-block">
                 <h4>Responsible Company Identification</h4>
-                <p>Company Name: ALL SEASONS FLOWERS HOLDINGS LIMITED | Company Number: 13554616 | Registered Address: Falcon House, Central Way, Feltham, TW14 0UQ, United Kingdom | Director: Simon Cromey | E-mail: suport@tubenova.site| This website is the responsibility of the company identified above, which is responsible for the content, offers and obligations presented here.</p>
+                <p>Company Name: ALL SEASONS FLOWERS HOLDINGS LIMITED | Company Number: 13554616 | Registered Address: Falcon House, Central Way, Feltham, TW14 0UQ, United Kingdom | Director: Simon Cromey | E-mail: suport@tubenova.site | This website is the responsibility of the company identified above, which is responsible for the content, offers and obligations presented here.</p>
             </div>
         </div>
     </section>
@@ -839,19 +937,126 @@
         <p>ALL SEASONS FLOWERS HOLDINGS LIMITED | Company Number: 13554616</p>
         <p>Registered Address: Falcon House, Central Way, Feltham, TW14 0UQ, United Kingdom</p>
         <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Use</a>
-            <a href="#">Contact</a>
+            <a href="#" data-modal="privacyModal">Privacy Policy</a>
+            <a href="#" data-modal="termsModal">Terms of Use</a>
+            <a href="mailto:suport@tubenova.site">Contact</a>
         </div>
         <p class="footer-contact">Director: Simon Cromey</p>
         <p class="footer-contact">E-mail: suport@tubenova.site</p>
         <p style="margin-top: 16px; font-size: 11px; color: #666;">This website is not part of Google, YouTube or Meta Platforms, Inc. and is not endorsed by any of these companies. Google and YouTube are trademarks of GOOGLE LLC. Facebook and Instagram are trademarks of META PLATFORMS, Inc.</p>
     </footer>
 
+
+
+    <!-- Privacy Policy and Terms Popups -->
+    <div class="policy-modal" id="privacyModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+        <div class="policy-modal-content">
+            <button type="button" class="policy-modal-close" data-close-modal aria-label="Close popup">×</button>
+            <h2 class="playfair" id="privacyTitle">Privacy Policy</h2>
+            <p class="policy-updated">Last updated: 2026</p>
+
+            <p>This Privacy Policy explains how ALL SEASONS FLOWERS HOLDINGS LIMITED collects, uses, stores and protects personal information submitted through this website in connection with the devotional digital material presented here.</p>
+
+            <h3>1. Company responsible for this website</h3>
+            <p>Company Name: ALL SEASONS FLOWERS HOLDINGS LIMITED<br>
+            Company Number: 13554616<br>
+            Registered Address: Falcon House, Central Way, Feltham, TW14 0UQ, United Kingdom<br>
+            Director: Simon Cromey<br>
+            Contact E-mail: suport@tubenova.site</p>
+
+            <h3>2. Information we may collect</h3>
+            <p>When you complete a form on this website, we may collect the information you voluntarily provide, including your full name, email address, WhatsApp or phone number, city or region, preferred contact time and any communication details necessary to respond to your request.</p>
+
+            <h3>3. How we use your information</h3>
+            <ul>
+                <li>To contact you about the Novena of Our Lady Undoer of Knots digital material.</li>
+                <li>To answer questions about the product, delivery, access, refund policy and support.</li>
+                <li>To provide customer service and administrative support.</li>
+                <li>To keep basic records related to enquiries, purchases, support requests and legal obligations.</li>
+                <li>To improve the clarity, safety and functionality of this website.</li>
+            </ul>
+
+            <h3>4. Legal basis and consent</h3>
+            <p>By submitting your information through the form, you authorise our team to contact you using the details provided. We process your information based on your consent, legitimate business interests, customer support needs and compliance with applicable legal obligations.</p>
+
+            <h3>5. Data sharing</h3>
+            <p>We do not sell your personal data. We may use trusted operational tools or service providers to manage forms, email delivery, customer support, payment processing or analytics. These providers should only process information as needed to provide their services and should not use it for unrelated purposes.</p>
+
+            <h3>6. Data retention</h3>
+            <p>We keep personal information only for as long as reasonably necessary to respond to your enquiry, provide support, manage purchases, comply with legal obligations and maintain business records. You may request deletion of your information by contacting us at the email shown above.</p>
+
+            <h3>7. Security</h3>
+            <p>We take reasonable technical and organisational measures to protect personal information against unauthorised access, loss, misuse or disclosure. No internet transmission or electronic storage system is completely risk-free, but we aim to handle your data responsibly.</p>
+
+            <h3>8. Cookies and tracking</h3>
+            <p>This website may use basic technologies such as cookies, pixels or analytics tools to understand visits, measure advertising performance and improve the user experience. These technologies may collect information such as browser type, device data, pages visited and approximate interaction behaviour.</p>
+
+            <h3>9. Your rights</h3>
+            <p>Depending on applicable law, you may request access, correction, deletion, restriction of processing or withdrawal of consent regarding your personal information. To make a request, contact us at suport@tubenova.site.</p>
+
+            <h3>10. Children</h3>
+            <p>This website and product are intended for adults. We do not knowingly collect personal data from children. If a parent or guardian believes a child has submitted personal information, they may contact us to request removal.</p>
+
+            <h3>11. Updates to this policy</h3>
+            <p>We may update this Privacy Policy from time to time to reflect changes in our website, operational practices or legal requirements. The updated version will be made available on this website.</p>
+        </div>
+    </div>
+
+    <div class="policy-modal" id="termsModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+        <div class="policy-modal-content">
+            <button type="button" class="policy-modal-close" data-close-modal aria-label="Close popup">×</button>
+            <h2 class="playfair" id="termsTitle">Terms of Use</h2>
+            <p class="policy-updated">Last updated: 2026</p>
+
+            <p>These Terms of Use govern access to and use of this website and the digital devotional material presented here. By using this website, submitting a form or purchasing the product, you agree to these terms.</p>
+
+            <h3>1. Website owner and responsible company</h3>
+            <p>This website is operated under the responsibility of ALL SEASONS FLOWERS HOLDINGS LIMITED, Company Number 13554616, registered at Falcon House, Central Way, Feltham, TW14 0UQ, United Kingdom. Director: Simon Cromey. Contact email: suport@tubenova.site.</p>
+
+            <h3>2. Nature of the product</h3>
+            <p>The product presented on this website is a digital devotional and educational material related to the Novena of Our Lady Undoer of Knots. It may include prayers, reflections, devotional guidance, written materials, audios, a spiritual journal or other support resources described on the page.</p>
+
+            <h3>3. No guaranteed spiritual, personal or material results</h3>
+            <p>The product is intended to support personal prayer and spiritual reflection. We do not guarantee healing, financial improvement, relationship outcomes, resolution of personal problems or any specific material, emotional or spiritual result. Experiences are individual and subjective.</p>
+
+            <h3>4. Not professional advice</h3>
+            <p>The content provided is not medical, psychological, legal, financial or therapeutic advice. It does not replace professional diagnosis, treatment or guidance. If you have a health, emotional, legal or financial concern, seek advice from a qualified professional.</p>
+
+            <h3>5. Access and delivery</h3>
+            <p>When a purchase is completed, access instructions may be sent by email, WhatsApp, members area, download page or another digital delivery method communicated to the customer. The customer is responsible for providing accurate contact information and checking inbox, spam or messaging channels.</p>
+
+            <h3>6. Payments and pricing</h3>
+            <p>Prices, offers and payment conditions may be displayed on the website or communicated during customer support. We reserve the right to update prices, bonuses and promotional conditions at any time, without affecting purchases already completed under previous agreed conditions.</p>
+
+            <h3>7. Refund policy</h3>
+            <p>We offer a 7-day refund period from the date of purchase. To request a refund, contact suport@tubenova.site within the stated period and provide the information needed to locate your purchase. Refund processing may depend on the payment provider used for the transaction.</p>
+
+            <h3>8. User responsibilities</h3>
+            <ul>
+                <li>Provide accurate information when completing forms or making a purchase.</li>
+                <li>Use the content for personal and lawful purposes only.</li>
+                <li>Do not copy, resell, redistribute, publish or commercially exploit the digital material without authorisation.</li>
+                <li>Do not use this website in a way that may harm, overload or interfere with its operation.</li>
+            </ul>
+
+            <h3>9. Intellectual property</h3>
+            <p>All texts, layout, design elements, digital materials, names, graphics and content available on this website are protected by intellectual property rights where applicable. Unauthorised reproduction or distribution is not permitted.</p>
+
+            <h3>10. Testimonials and third-party platforms</h3>
+            <p>Testimonials shown on this website reflect individual experiences and do not represent guaranteed outcomes. This website is not part of Google, YouTube, Facebook, Instagram or Meta Platforms, Inc. and is not endorsed by those companies.</p>
+
+            <h3>11. Limitation of liability</h3>
+            <p>To the extent permitted by law, the company is not liable for indirect, incidental or consequential losses arising from use of the website or devotional material. Nothing in these terms excludes liability where exclusion is not permitted by law.</p>
+
+            <h3>12. Changes to these terms</h3>
+            <p>We may update these Terms of Use when necessary. Continued use of the website after updates means you accept the revised terms.</p>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script>
         // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
@@ -899,6 +1104,53 @@
             el.style.transition = 'all 0.6s ease';
             observer.observe(el);
         });
+
+
+        // Privacy Policy and Terms modal popups
+        const modalTriggers = document.querySelectorAll('[data-modal]');
+        const modals = document.querySelectorAll('.policy-modal');
+        const closeButtons = document.querySelectorAll('[data-close-modal]');
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeModal(modal) {
+            if (!modal) return;
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+        }
+
+        modalTriggers.forEach(trigger => {
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal(this.getAttribute('data-modal'));
+            });
+        });
+
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                closeModal(this.closest('.policy-modal'));
+            });
+        });
+
+        modals.forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal(modal);
+            });
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                modals.forEach(modal => closeModal(modal));
+            }
+        });
+
     </script>
 
 </body></html>
